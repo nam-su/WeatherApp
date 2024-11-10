@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"> <!-- 각 아이템의 너비를 25%로 설정 -->
+
+    <TextView
+        android:id="@+id/textViewTodayWeatherTemperature"
+        style="@style/itemViewTextViewTodayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="28"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/imageViewTodayWeatherStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewTodayWeatherStatus"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:src="@drawable/weather_cloud"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTodayWeatherContent"
+        app:layout_constraintEnd_toEndOf="@id/textViewTodayWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@id/textViewTodayWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@id/textViewTodayWeatherTemperature" />
+
+    <TextView
+        android:id="@+id/textViewTodayWeatherContent"
+        style="@style/itemViewTextViewTodayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15.00"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewTodayWeatherStatus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

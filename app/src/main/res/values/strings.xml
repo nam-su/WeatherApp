@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">WeatherAppExample</string>
+
+    <!-- Location TextView-->
+    <string name="textViewLocation"> Fortaleza </string>
+
+    <!-- Content Description -->
+    <string name="notificationContentDescription">notification</string>
+
+    <!-- 테스트 텍스트 뷰 -->
+    <string name="textViewTemperature">28°</string>
+    <string name="textViewMaxMinTemperature">Precipitations\nMax : 31° Min : 25°</string>
+    <string name="textViewRain"> 6% </string>
+    <string name="textViewHumidity">90%</string>
+    <string name="textViewWind">19 km/h</string>
+    <string name="textViewToday">Today</string>
+    <string name="textViewDate">Mar, 9</string>
+
+</resources>

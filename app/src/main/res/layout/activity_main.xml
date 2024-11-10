@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".MainActivity">
+
+    <!-- Location TextView-->
+    <TextView
+        android:id="@+id/textViewLocation"
+        style="@style/textViewLocation"
+        android:text="@string/textViewLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Notification Button -->
+    <ImageButton
+        android:id="@+id/imageButtonNotification"
+        style="@style/imageButtonNotification"
+        android:contentDescription="@string/notificationContentDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Lottie 라이브러리 이용한 애니메이션효과 적용-->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationViewWeather"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_rain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewLocation"
+        app:layout_constraintBottom_toTopOf="@id/textViewTemperature"
+        app:lottie_repeatCount="3"/>
+
+    <!-- 온도 나타내는 TextView -->
+    <TextView
+        android:id="@+id/textViewTemperature"
+        style="@style/textViewTemperature"
+        android:text="@string/textViewTemperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottieAnimationViewWeather"
+        app:layout_constraintBottom_toTopOf="@id/textViewMaxMinTemperature"/>
+
+    <!-- 최대 최소 나타내는 TextView -->
+    <TextView
+        android:id="@+id/textViewMaxMinTemperature"
+        style="@style/textViewMaxMinTemperature"
+        android:text="@string/textViewMaxMinTemperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature"/>
+
+    <!-- 강수 습도 바람 담는 레이아웃-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutWeatherContent"
+        style="@style/cornerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutTodayWeather"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaxMinTemperature">
+
+        <!-- 강수 -->
+        <TextView
+            android:id="@+id/textViewRain"
+            style="@style/weatherContent"
+            android:text="@string/textViewRain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textViewHumidity"
+            app:drawableStartCompat="@drawable/rain" />
+
+        <!-- 습도 -->
+        <TextView
+            android:id="@+id/textViewHumidity"
+            style="@style/weatherContent"
+            android:text="@string/textViewHumidity"
+            app:layout_constraintStart_toEndOf="@id/textViewRain"
+            app:layout_constraintEnd_toStartOf="@id/textViewWind"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:drawableStartCompat="@drawable/humidity" />
+
+        <!-- 바람 -->
+        <TextView
+            android:id="@+id/textViewWind"
+            style="@style/weatherContent"
+            android:text="@string/textViewWind"
+            app:layout_constraintStart_toEndOf="@+id/textViewHumidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:drawableStartCompat="@drawable/wind" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 오늘 날씨 담는 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutTodayWeather"
+        style="@style/cornerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutWeatherContent">
+
+        <TextView
+            android:id="@+id/textViewToday"
+            style="@style/textViewToday"
+            android:text="@string/textViewToday"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewDate"
+            style="@style/textViewDate"
+            android:text="@string/textViewDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewTodayWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/today_weather_item_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewToday"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
